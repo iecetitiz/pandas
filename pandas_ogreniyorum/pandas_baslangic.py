@@ -80,7 +80,7 @@ eski = vg[vg["Year"] < 1990] #istersem bu filtrelemeyi abstraction olmadan boyle
 
 #birden fazla sart da saglayabilirim
 
-sales = vg[(vg["Publisher"] == "Nintendo") & (vg["Global_Sales"] > 0.50) ]
+sales = vg[(vg["Publisher"] == "Nintendo") & (vg["Global_Sales"] > 0.50) ] #kosullari ayri ayri parantezlere almak onemli
 
 # Pandas 5 
 # List Comprehension ile yeni bir sutun eklemek
