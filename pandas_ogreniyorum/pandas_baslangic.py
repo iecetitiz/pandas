@@ -54,6 +54,7 @@ print(vg.dtypes)
 #simdi cok cok cok onemli bir method, hatta o kadar onemli ki baska bir degiskene aktarip kullanicam
 describe = vg.describe() #bu method sadece sayisal olan sutunlari aliyor
 describeT = vg.describe().T #boyle gormek daha kolay
+eksikleri_sil = vg.dropna().describe().T #nan degerleri goz ardi ederek istatistik sunuyor
 # %50 olarak verilen medyani gosteriyor
 
 # Pandas 3
@@ -65,6 +66,9 @@ Year = vg.Year #istersem de boyle getiririm, ama bu sefer column isminde bosluk 
 print(vg.loc[:, "Global_Sales"]) #stop degerleri bu sefer dahil bilgin olsun, ayrica yine sol taraf satir sag taraf sutun
 print(vg.loc[2:5, "Name":"Genre"])
 print(vg.loc[::-1, "Global_Sales"]) #istersem tersten de yazdirabilirim
+
+#istersem fancy index loc icinde de kullanabilirim
+#istersem kosullu islem de yapabilirim
 
 print(vg.iloc[:, 2:4]) #iloc oldugunda fark yine ayni numpy gibi olmasi, indexlerle ve numaralariyla bir dilimleme yapiyorum
 #yine ayni numpyda ogrendigim gibi baslangiclar dahil bitisler dahil degil
@@ -242,7 +246,7 @@ df1.values
 
 type(df1.values) #value degerlerini aldigimda numpy arrayine ceviriyor
 
-#Numpy arrayi uzerinden de DataFrame olusturabilirim
+#Numpy arrayi uzerinden de DataFrame olusturabilirim, ki yukarida da olusturdum zaten
 
 a = np.array([1, 2, 3, 4])
 pd.DataFrame(a, columns = ["dgisken1"])
@@ -263,8 +267,9 @@ df_dictionary.index = ["a", "b", "c", "d", "e"] #boyle de degistiririm
 df["c":"e"] #bunu soyleyebilirim artik
 
 
+#istersem bir sutunu istersem de bir satiri silerim, satir sileceksem axis = 0, sutun sileceksem axis = 1
 df_dictionary.drop("a", axis = 0, inplace = True) #indexi a olan satiri siler
-#eger inplacei True olarak degistirmezsem yaptigim degisiklik kalici olmaz
+#eger inplace'i True olarak degistirmezsem yaptigim degisiklik kalici olmaz
 
 #fancy index ile birden fazla satiri secip tum o satirlari sutlayabilirim
 
@@ -290,4 +295,6 @@ df_dictionary.drop("fark", axis = 1, inplace = True)
 #fancy index'i yine kullanabilirim ve istedigim sutunlari sutlarim
 filter_again = ["var1", "var3"]
 df_dictionary.drop(filter_again, axis = 1) #inplace eklesem kalici olurdu
+
+
 

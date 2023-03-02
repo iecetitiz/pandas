@@ -59,7 +59,6 @@ df3 = pd.concat([df, df2], ignore_index= True)
 
 
 pd.concat([df, df2], join = "inner", ignore_index=True)
-df.reset_index(inplace=True, drop=True)
 
 
 
