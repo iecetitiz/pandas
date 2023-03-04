@@ -221,7 +221,7 @@ sozluk[["log", "reg"]]
 
 #DataFrame
 #makine ogrenmesindeki kilit rol pandas islemlerindedir
-#istersem listlerden de DataFrame yaratabilirim
+#istersem python listlerden de DataFrame yaratabilirim
 
 l = [1, 2, 39, 12, 67, 90]
 pd.DataFrame(l, columns=["degisken_ismi"])
@@ -242,7 +242,7 @@ type(df)
 df1.shape
 df1.ndim
 df1.size
-df1.values
+df1.values #degisken isimleri olmadan sadece degerleri veriyor, type olarak da ndarray
 
 type(df1.values) #value degerlerini aldigimda numpy arrayine ceviriyor
 
@@ -258,23 +258,24 @@ s3 = np.random.randint(10, size = 5)
 
 dictionary = {"var1": s1, "var2": s2, "var3": s3}
 
-df_dictionary = pd.DataFrame(dictionary)
+df_dictionary = pd.DataFrame(dictionary) #dictionary'yi direkt iceri atip da kullanabilirim
 
 df_dictionary.index #boyle ulasabildigim gibi istersem degistire de bilirim
 
 df_dictionary.index = ["a", "b", "c", "d", "e"] #boyle de degistiririm
 
-df["c":"e"] #bunu soyleyebilirim artik
+df["c":"e"] #bunu soyleyebilirim artik, ama bunu loc/iloc mantigiyla yaparim
 
 
 #istersem bir sutunu istersem de bir satiri silerim, satir sileceksem axis = 0, sutun sileceksem axis = 1
 df_dictionary.drop("a", axis = 0, inplace = True) #indexi a olan satiri siler
 #eger inplace'i True olarak degistirmezsem yaptigim degisiklik kalici olmaz
 
+
 #fancy index ile birden fazla satiri secip tum o satirlari sutlayabilirim
 
 fancy_filter = ["c", "b"]
-df_dictionary.drop(fancy_filter, axis = 0)
+df_dictionary.drop(fancy_filter, axis = 0) 
 
 #bir degisken isminin olup olmadigini sorgulayabilirim
 
@@ -283,7 +284,7 @@ df_dictionary.drop(fancy_filter, axis = 0)
 #aaaaaaaaaa ama bu cok guzel bi sorgu
 h = ["melis", "mert", "hakan"]
 for i in h:
-    print(i in df_dictionary)
+    print(i in df_dictionary) #ic ice iki for dongusu gibi aslinda
 
 
 #elimde var olan iki tane sutunu kullanarak yeni bir sutun yaratabilirim
@@ -295,6 +296,11 @@ df_dictionary.drop("fark", axis = 1, inplace = True)
 #fancy index'i yine kullanabilirim ve istedigim sutunlari sutlarim
 filter_again = ["var1", "var3"]
 df_dictionary.drop(filter_again, axis = 1) #inplace eklesem kalici olurdu
+
+
+df.drop(index = [3], axis = 0, inplace = True)
+
+
 
 
 
